@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -6,10 +8,12 @@ import java.util.Random;
  * Created by Yunze on 2019/9/7.
  */
 public class main {
-    public static void main(String[] args) throws AWTException, InterruptedException {
+    public static void main(String[] args) throws AWTException, InterruptedException, IOException {
         // user input
         int total_scrolls = 71; //  IMPORTANT: 0 indexed
         int your_round_number = 1;
+        int port = 3310;
+        String IP_address = "localhost/127.0.0.1";
         // var
         int round = 1;
         int current_scroll_No = 0;
@@ -21,6 +25,8 @@ public class main {
         skill_to_use skills = new skill_to_use();
 
         // *************************************** start of application ****************************************
+
+        Socket sock = new Socket(IP_address, port);
 
         //  3 rounds in total
         while(round <= 3) {
@@ -43,7 +49,7 @@ public class main {
             // ************** START steps for each round **************
             while (current_scroll_No <= total_scrolls) {
                 if (leader) {
-                    step.click_scroll(current_scroll_No);
+                    step.click_scroll(current_scroll_No, sock);
                 }
 
                 step.confirm();

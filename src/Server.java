@@ -30,5 +30,5 @@ public class Server {
         sock.close();
         sSock.close();
 	System.out.println("server: closed sockets and terminating");
-    }//main()
-}//Server
+    }
+}

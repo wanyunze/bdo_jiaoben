@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -28,18 +30,19 @@ public class steps {
     final int y_reward_confirm = (int)(screen.height/1.18);
     Client_operations co;
 
-    public void click_scroll(int current_scroll_No) throws AWTException, InterruptedException {
-        // open item
+    public void click_scroll(int current_scroll_No, Socket socket) throws AWTException, InterruptedException,IOException {
         boolean flag = true;
-
         robot = new Robot();
+        co = new Client_operations();
+
+        // open item
         robot.keyPress(KeyEvent.VK_I);
         robot.keyRelease(KeyEvent.VK_I);
         Thread.sleep(1000);
         
-        // move mouse and click scroll
+        // move mouse
         int column = current_scroll_No % 8;
-         item_x = (int)(screen.width/(1.62)+column*column_gap);
+        item_x = (int)(screen.width/(1.62)+column*column_gap);
 
         if((current_scroll_No/8) < 1){
              item_y = (int)(screen.height/3.8);
@@ -52,17 +55,14 @@ public class steps {
         Thread.sleep(500);
         robot.mouseMove(item_x,item_y);
 
-        co = new Client_operations();
         // TODO start: synchronization
-        co.signal_scroll();
+        co.signal_scroll(socket);
         while(flag){
-            co.wait_scroll_signal();
-            String check = null;
-            if (check.equals(null)){
-                flag = false;
-            }
+            flag = co.wait_scroll_signal();
         }
         // TODO end: synchronization
+
+        // click
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         Thread.sleep(500);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);

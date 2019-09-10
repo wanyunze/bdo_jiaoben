@@ -1,11 +1,15 @@
+import java.net.Socket;
+
 /**
  * Created by Yunze on 2019/9/10.
  */
 public class Client_operations {
 
-    public void signal_scroll() {
+    public void signal_scroll(Socket socket) {
+
     }
 
-    public void wait_scroll_signal() {
+    public boolean wait_scroll_signal() {
+        return false;
     }
 }
