@@ -61,7 +61,7 @@ public class steps {
 
     }
 
-    // TODO: reset to (0,0) and test coordinates again
+    // TODO: reset to (0,0) and test coordinates again 1/2
     public void collect_reward() throws AWTException, InterruptedException {
         robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
@@ -84,7 +84,7 @@ public class steps {
         robot.keyRelease(KeyEvent.VK_ESCAPE);
 
     }
-    // TODO: reset to (0,0) and test coordinates again
+
     public void confirm() throws AWTException, InterruptedException {
         robot = new Robot();
         robot.mouseMove(x_confirm, y_confirm);
@@ -100,17 +100,16 @@ public class steps {
     // TODO：Set your skill order
     public void stage_1_skill() throws AWTException, InterruptedException {
         skill_to_use skills = new skill_to_use();
+        skills.skill(); // SHIFT + SPACE
+        skills.skill5(); // RMB
+        skills.skill1(); // SHIFT + Q
     }
 
-    public void stage_2_skill() {
+    public void stage_2_skill() throws AWTException, InterruptedException {
         skill_to_use skills = new skill_to_use();
+        skills.skill7(); // Dragon
     }
 
-    public void stage_3_skill() {
-        skill_to_use skills = new skill_to_use();
-    }
-
-    // TODO: Implement function and test coordinates
 
     public static void pass_on_leader_1() throws AWTException, InterruptedException {
         Robot robot2 = new Robot();

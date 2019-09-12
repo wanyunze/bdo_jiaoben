@@ -99,10 +99,8 @@ public class Central_Server {
             so.scrollCall(Leader_socket, Inheritor_socket, Peasant_socket);
             // get finish stage 1 message from all, send start stage 2 message to all
             so.stage_1(Leader_socket, Inheritor_socket, Peasant_socket);
-            // get finish stage 2 message from all, send start stage 3 message to all
+            // get finish stage 2 message from all, send start collect reward message to all
             so.stage_2(Leader_socket, Inheritor_socket, Peasant_socket);
-            // get finish stage 3 message from all, send start collect reward message to all
-            so.stage_3(Leader_socket, Inheritor_socket, Peasant_socket);
             // get collect reward message from all
             so.reward_collect(Leader_socket, Inheritor_socket, Peasant_socket);
             // get change leader signal from leader

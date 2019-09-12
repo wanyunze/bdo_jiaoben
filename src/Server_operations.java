@@ -52,12 +52,6 @@ public class Server_operations {
         send_all(outMsg,leader_socket,inheritor_socket,peasant_socket);
     }
 
-    public void stage_3(Socket leader_socket, Socket inheritor_socket, Socket peasant_socket) throws IOException {
-        receive_all(leader_socket,inheritor_socket,peasant_socket);
-        String outMsg = server_outMsg.stage_3_msg;
-        send_all(outMsg,leader_socket,inheritor_socket,peasant_socket);
-    }
-
     public void reward_collect(Socket leader_socket, Socket inheritor_socket, Socket peasant_socket) throws IOException {
         receive_all(leader_socket,inheritor_socket,peasant_socket);
     }

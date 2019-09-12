@@ -8,6 +8,14 @@ import java.awt.event.KeyEvent;
 public class skill_to_use {
     Robot robot;
 
+    // SHIFT + SPACE
+    public void skill() throws AWTException {
+        robot = new Robot();
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_SPACE);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_SPACE);
+    }
     // SHIFT + Q
     public void skill1() throws AWTException {
         robot = new Robot();
@@ -38,9 +46,8 @@ public class skill_to_use {
         Thread.sleep(500);
         robot.keyPress(KeyEvent.VK_C);
         robot.keyRelease(KeyEvent.VK_C);
-
-
     }
+
     // SHIFT+RMB
     public void skill4() throws InterruptedException, AWTException {
         robot = new Robot();
@@ -63,5 +70,12 @@ public class skill_to_use {
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         Thread.sleep(2000);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+    }
+
+    // Dragon
+    public void skill7() throws InterruptedException, AWTException {
+        robot = new Robot();
+        robot.keyPress(KeyEvent.VK_2);
+        robot.keyRelease(KeyEvent.VK_2);
     }
 }

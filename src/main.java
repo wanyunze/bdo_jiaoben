@@ -72,9 +72,10 @@ public class main {
                 co.start_stage_2(sock);
                 step.stage_2_skill();
                 co.complete_stage_2(sock);
-                co.start_stage_3(sock);
-                step.stage_3_skill();
-                co.complete_stage_3(sock);
+
+//                co.start_stage_3(sock);
+//                step.stage_3_skill();
+//                co.complete_stage_3(sock);
 
                 // collect reward
                 co.start_collect_reward(sock);

@@ -50,14 +50,6 @@ public class Client_operations {
         send("stage 2 complete",sock);
     }
 
-    public void start_stage_3(Socket sock) throws IOException {
-        receive(sock);
-    }
-
-    public void complete_stage_3(Socket sock) throws IOException {
-        send("stage 3 complete",sock);
-    }
-
     public  void start_collect_reward(Socket sock) throws IOException {
         receive(sock);
     }
