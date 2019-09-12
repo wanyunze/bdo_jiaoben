@@ -13,11 +13,6 @@ import java.util.Random;
 public class steps {
     Robot robot;
     screen_size screen = new screen_size();
-    //1.25，1.22，1.19，1.16，1.13
-    // 0.051
-    //1.62,1.569,1.518,1.467,1.416,1.365,
-    //3.8, 3.45,3.1,2.75,2.4,2.05,1.7
-    // 0.37
     int item_x;
     int item_y;
     int row_gap = (int)(screen.height*0.04);
@@ -26,8 +21,8 @@ public class steps {
     final int y_confirm = (int)(screen.height/2.25);
     int x_reward = (int)(screen.width/1.044);
     int y_reward = (int)(screen.height/1.94);
-    final int x_reward_confirm = (int)(screen.width/1.7);
-    final int y_reward_confirm = (int)(screen.height/1.18);
+    final int x_reward_confirm = (int)(screen.width*0.512);
+    final int y_reward_confirm = (int)(screen.height*0.867);
     Client_operations co;
 
     public void click_scroll(int current_scroll_No, Socket socket) throws AWTException, InterruptedException,IOException {
@@ -78,6 +73,8 @@ public class steps {
         Thread.sleep(500);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(2000);
+        robot.mouseMove(0,0);
+        Thread.sleep(500);
         robot.mouseMove(x_reward_confirm, y_reward_confirm);
         Thread.sleep(500);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
@@ -91,6 +88,7 @@ public class steps {
     public void confirm() throws AWTException, InterruptedException {
         robot = new Robot();
         robot.mouseMove(x_confirm, y_confirm);
+        Thread.sleep(500);
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
         Thread.sleep(500);
@@ -113,6 +111,44 @@ public class steps {
     }
 
     // TODO: Implement function and test coordinates
-    public static void pass_on_leader() {
+
+    public static void pass_on_leader_1() throws AWTException, InterruptedException {
+        Robot robot2 = new Robot();
+        robot2.mouseMove(0,0);
+        Thread.sleep(500);
+        robot2.mouseMove(296, 304);
+        Thread.sleep(500);
+        robot2.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(500);
+        robot2.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+
+        robot2.mouseMove(0,0);
+        Thread.sleep(500);
+        robot2.mouseMove(395, 319);
+        Thread.sleep(500);
+        robot2.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(500);
+        robot2.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
     }
+
+    public static void pass_on_leader_2() throws AWTException, InterruptedException {
+        Robot robot3 = new Robot();
+        robot3.mouseMove(0,0);
+        Thread.sleep(500);
+        robot3.mouseMove(296, 362);
+        Thread.sleep(500);
+        robot3.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(500);
+        robot3.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+
+        robot3.mouseMove(0,0);
+        Thread.sleep(500);
+        robot3.mouseMove(395, 378);
+        Thread.sleep(500);
+        robot3.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(500);
+        robot3.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+    }
+
+
 }

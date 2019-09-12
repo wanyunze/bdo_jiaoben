@@ -10,10 +10,10 @@ import java.util.Random;
 public class main {
     public static void main(String[] args) throws AWTException, InterruptedException, IOException {
         // user input
-        int total_scrolls = 71; //  IMPORTANT: 0 indexed
+        int total_scrolls = 71; //  TODO: IMPORTANT: 0 indexed
         int your_round_number = 1;  // TODO: change to your role accordingly
         int port = 3310;
-        String server_IP_address = server_outMsg.server_IP;
+        String server_IP_address = server_outMsg.server_IP; // TODO: change to host IP address
         // var
         int round = 1;
         int current_scroll_No = 0;
@@ -29,7 +29,7 @@ public class main {
 
         Socket sock = new Socket(server_IP_address, port);
 
-        // TODO: initialise connection message
+        // initialise connection message
         co = new Client_operations();
         co.connect_start_message(sock);
 
@@ -40,7 +40,7 @@ public class main {
                 leader = true;
                 inheritor = false;
                 peasant = false;
-                // TODO: send role signal
+                // send role signal
                 co.send_role("Leader",sock);
             }else if (your_round_number == (round + 1)){
                 leader = false;
@@ -68,33 +68,24 @@ public class main {
 
                 // stage 1-3
                 step.stage_1_skill();
-                // TODO: send complete stage 1 message
                 co.complete_stage_1(sock);
-                // TODO: receive start stage 2 message
                 co.start_stage_2(sock);
                 step.stage_2_skill();
-                // TODO: send complete stage 2 message
                 co.complete_stage_2(sock);
-                // TODO: receive start stage 3 message
                 co.start_stage_3(sock);
                 step.stage_3_skill();
-                // TODO: send complete stage 3 message
                 co.complete_stage_3(sock);
-                // TODO: receive start collect reward message
-                co.start_collect_reward(sock);
 
                 // collect reward
+                co.start_collect_reward(sock);
                 step.collect_reward();
-                // TODO: send complete collect reward message
                 co.complete_collect_reward(sock);
 
                 if(current_scroll_No != total_scrolls) {
-
-                    // TODO: send not change leader signal
+                    // send not change leader signal
                     if(leader) {
                         co.not_change_leader(sock);
-
-                        // TODO: send continue signal
+                        // send continue signal
                         co.continue_signal(sock);
                     }
                 }
@@ -102,19 +93,26 @@ public class main {
                 current_scroll_No++;
             }
             // ************** END steps for each round **************
+            current_scroll_No = 0;
 
-            if (leader){
-                co.change_leader(sock);
-                steps.pass_on_leader();
-                // TODO: send continue signal
-                if(round != 3) {
+            if (round == 3){
+                co.not_change_leader(sock);
+                co.end_signal(sock);
+            }else{
+                if (leader){
+                    co.change_leader(sock);
+                    if(round == 1) {
+                        // van to 486
+                        steps.pass_on_leader_1();
+                    }else{
+                        // 486 to luan
+                        steps.pass_on_leader_2();
+                    }
                     co.continue_signal(sock);
                 }
             }
-
             // increment round
             round+=1;
         }
-        co.end_signal(sock);
     }
 }
