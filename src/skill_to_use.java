@@ -33,11 +33,6 @@ public class skill_to_use {
     // Unbridled Wrath - quick slot 5
     public void skill3() throws InterruptedException, AWTException {
         robot = new Robot();
-//        robot.keyPress(KeyEvent.VK_SHIFT);
-//        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//        Thread.sleep(2000);
-//        robot.keyRelease(KeyEvent.VK_SHIFT);
-//        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         robot.keyPress(KeyEvent.VK_5);
         robot.keyRelease(KeyEvent.VK_5);
         Thread.sleep(500);
@@ -46,6 +41,7 @@ public class skill_to_use {
 
 
     }
+    // SHIFT+RMB
     public void skill4() throws InterruptedException, AWTException {
         robot = new Robot();
         robot.keyPress(KeyEvent.VK_SHIFT);
@@ -54,14 +50,14 @@ public class skill_to_use {
         robot.keyRelease(KeyEvent.VK_SHIFT);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
     }
-
+    // FFF
     public void skill5() throws InterruptedException, AWTException {
         robot = new Robot();
         robot.keyPress(KeyEvent.VK_F);
         Thread.sleep(2000);
         robot.keyRelease(KeyEvent.VK_F);
     }
-
+    // RMB
     public void skill6() throws InterruptedException, AWTException {
         robot = new Robot();
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);

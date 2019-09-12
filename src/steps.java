@@ -31,7 +31,6 @@ public class steps {
     Client_operations co;
 
     public void click_scroll(int current_scroll_No, Socket socket) throws AWTException, InterruptedException,IOException {
-        boolean flag = true;
         robot = new Robot();
         co = new Client_operations();
 
@@ -55,12 +54,10 @@ public class steps {
         Thread.sleep(500);
         robot.mouseMove(item_x,item_y);
 
-        // TODO start: synchronization
+        // start: scroll synchronization
         co.signal_scroll(socket);
-        while(flag){
-            flag = co.wait_scroll_signal();
-        }
-        // TODO end: synchronization
+        co.wait_scroll_signal(socket);
+        // end: scroll synchronization
 
         // click
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
