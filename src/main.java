@@ -71,6 +71,7 @@ public class main {
                 co.complete_stage_1(sock);
                 co.start_stage_2(sock);
                 step.stage_2_skill();
+                Thread.sleep(5000);
                 co.complete_stage_2(sock);
 
 //                co.start_stage_3(sock);
